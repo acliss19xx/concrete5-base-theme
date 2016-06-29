@@ -156,6 +156,8 @@ class PageTheme extends \Concrete\Core\Page\Theme\Theme implements ThemeProvider
     /*
     レイアウト機能で追加するレイアウトの定義ができる
     たとえば、スマートフォンサイズでは1カラム、タブレットサイズでは2カラム、PCサイズでは3カラムという設定ができる
+    解説（英語）
+    http://documentation.concrete5.org/developers/designing-for-concrete5/adding-complex-custom-layout-presets-in-your-theme
     */
     public function getThemeAreaLayoutPresets()
     {
