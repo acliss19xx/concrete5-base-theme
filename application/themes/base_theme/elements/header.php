@@ -50,7 +50,7 @@ http://ja.katzueno.com/2015/08/3492/
     ?>
 </head>
 <body>
-    <?php// ↓必須タグ これがないと編集画面でレイアウトが崩れる ?>
+    <?php // ↓必須タグ これがないと編集画面でレイアウトが崩れる ?>
     <div class="<?php echo $c->getPageWrapperClass()?>">
     <?php
     /*
