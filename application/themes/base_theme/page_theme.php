@@ -1,5 +1,17 @@
 <?php
 
+/*
+標準テーマ elemental の page_theme.php の解説
+http://acliss.secret.jp/private-blog/acliss-blog/2015/12/12/elemental%E3%81%AEpage_theme/
+*/
+
+/*
+テーマのフォルダ名を変更した場合、下記 BaseTheme の箇所をフォルダ名に合わせて変更する
+※テーマのフォルダ名には英子文字、数字と _ （アンダーバー）が使用できる。-  （ハイフン）は使用できない
+
+フォルダ名が base_theme の場合、 namespace は BaseTheme となる
+（アンダーバーは削除、頭一文字とアンダーバー後の一文字は大文字に変更）
+*/
 namespace Application\Theme\BaseTheme;
 
 use Concrete\Core\Area\Layout\Preset\Provider\ThemeProviderInterface;
@@ -8,6 +20,11 @@ class PageTheme extends \Concrete\Core\Page\Theme\Theme implements ThemeProvider
 {
     public function registerAssets()
     {
+        /*
+        concrete5で最初から用意されているcssやjavascriptを読み込むか設定する
+        $this->providesAsset() —- 通常使われるcssやjavascriptを使用しない
+        $this->requireAsset() —- concrete5のコアで用意されているcssやjavascriptを使用する
+        */
         //$this->providesAsset('javascript', 'bootstrap/*');
         $this->providesAsset('css', 'bootstrap/*');
         $this->providesAsset('css', 'blocks/form');
@@ -31,18 +48,33 @@ class PageTheme extends \Concrete\Core\Page\Theme\Theme implements ThemeProvider
         $this->requireAsset('javascript-conditional', 'respond');
     }
 
+    /*
+    レイアウト機能を使うときのグリッドシステムをどのCSSフレームワークにするか設定する
+    concrete5では、Bootstrap 3、Bootstrap 2、Foundation、960 grid をサポートしている
+    http://concrete5-japan.org/help/5-7/developer/designing-for-concrete5/adding-grid-support-to-your-theme/enabling-grid-support-for-areas-and-layouts/
+    */
     protected $pThemeGridFrameworkHandle = 'bootstrap3';
 
+    /*
+    テーマ名
+    */
     public function getThemeName()
     {
         return t('Base Theme');
     }
 
+    /*
+    テーマの説明
+    */
     public function getThemeDescription()
     {
         return t('Empty Theme');
     }
 
+    /*
+    ブロックのカスタムクラス名を追加
+    http://concrete5-japan.org/help/5-7/developer/designing-for-concrete5/advanced-css-and-javascript-usage/adding-custom-css-classes-to-blocks-areas-and-the-editor/
+    */
     public function getThemeBlockClasses()
     {
         return array(
@@ -68,7 +100,11 @@ class PageTheme extends \Concrete\Core\Page\Theme\Theme implements ThemeProvider
             ),
         );
     }
-
+    
+    /*
+    エリアのカスタムクラス名を追加
+    http://concrete5-japan.org/help/5-7/developer/designing-for-concrete5/advanced-css-and-javascript-usage/adding-custom-css-classes-to-blocks-areas-and-the-editor/
+    */
     public function getThemeAreaClasses()
     {
         return array(
@@ -76,6 +112,10 @@ class PageTheme extends \Concrete\Core\Page\Theme\Theme implements ThemeProvider
         );
     }
 
+    /*
+    ブロックのデフォルトのカスタムテンプレートを設定
+    http://concrete5-japan.org/help/5-7/developer/working-with-blocks/working-with-existing-block-types/creating-additional-custom-view-templates/default-a-block-to-a-custom-template-in-a-theme/
+    */
     public function getThemeDefaultBlockTemplates()
     {
         return array(
@@ -83,6 +123,10 @@ class PageTheme extends \Concrete\Core\Page\Theme\Theme implements ThemeProvider
         );
     }
 
+    /*
+    レスポンシブに対応したテーマの場合、どの幅で画像を切り替えるか定義できる
+    http://concrete5-japan.org/help/5-7/developer/designing-for-concrete5/supporting-responsive-images-in-your-concrete5-theme/
+    */
     public function getThemeResponsiveImageMap()
     {
         return array(
@@ -92,6 +136,10 @@ class PageTheme extends \Concrete\Core\Page\Theme\Theme implements ThemeProvider
         );
     }
 
+    /*
+    記事ブロックで選択出来るクラスを定義できる
+    http://concrete5-japan.org/help/5-7/developer/designing-for-concrete5/advanced-css-and-javascript-usage/adding-custom-css-classes-to-blocks-areas-and-the-editor/
+    */
     public function getThemeEditorClasses()
     {
         return array(
@@ -105,6 +153,10 @@ class PageTheme extends \Concrete\Core\Page\Theme\Theme implements ThemeProvider
         );
     }
 
+    /*
+    レイアウト機能で追加するレイアウトの定義ができる
+    たとえば、スマートフォンサイズでは1カラム、タブレットサイズでは2カラム、PCサイズでは3カラムという設定ができる
+    */
     public function getThemeAreaLayoutPresets()
     {
         $presets = array(
