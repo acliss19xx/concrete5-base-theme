@@ -14,9 +14,20 @@ http://acliss.secret.jp/private-blog/acliss-blog/2015/12/12/elemental%E3%81%AEpa
 */
 namespace Application\Theme\BaseTheme;
 
+/*
+getThemeAreaLayoutPresets を使用する場合は、下の2行を有効にし、
+ class PageTheme extends \Concrete\Core\Page\Theme\Theme
+をコメントアウトする
+参考：https://concrete5-japan.org/community/forums/development/post-12738/
+---
+
 use Concrete\Core\Area\Layout\Preset\Provider\ThemeProviderInterface;
 
 class PageTheme extends \Concrete\Core\Page\Theme\Theme implements ThemeProviderInterface
+
+*/
+
+class PageTheme extends \Concrete\Core\Page\Theme\Theme
 {
     public function registerAssets()
     {
@@ -74,7 +85,8 @@ class PageTheme extends \Concrete\Core\Page\Theme\Theme implements ThemeProvider
     /*
     ブロックのカスタムクラス名を追加
     http://concrete5-japan.org/help/5-7/developer/designing-for-concrete5/advanced-css-and-javascript-usage/adding-custom-css-classes-to-blocks-areas-and-the-editor/
-    */
+    使用する場合はコメントアウトを外す
+    
     public function getThemeBlockClasses()
     {
         return array(
@@ -100,33 +112,39 @@ class PageTheme extends \Concrete\Core\Page\Theme\Theme implements ThemeProvider
             ),
         );
     }
+    */
     
     /*
     エリアのカスタムクラス名を追加
     http://concrete5-japan.org/help/5-7/developer/designing-for-concrete5/advanced-css-and-javascript-usage/adding-custom-css-classes-to-blocks-areas-and-the-editor/
-    */
+    使用する場合はコメントアウトを外す
+    
     public function getThemeAreaClasses()
     {
         return array(
             'Page Footer' => array('area-content-accent'),
         );
     }
+    */
 
     /*
     ブロックのデフォルトのカスタムテンプレートを設定
     http://concrete5-japan.org/help/5-7/developer/working-with-blocks/working-with-existing-block-types/creating-additional-custom-view-templates/default-a-block-to-a-custom-template-in-a-theme/
-    */
+    使用する場合はコメントアウトを外す
+    
     public function getThemeDefaultBlockTemplates()
     {
         return array(
             'calendar' => 'bootstrap_calendar.php'
         );
     }
+    */
 
     /*
     レスポンシブに対応したテーマの場合、どの幅で画像を切り替えるか定義できる
     http://concrete5-japan.org/help/5-7/developer/designing-for-concrete5/supporting-responsive-images-in-your-concrete5-theme/
-    */
+    使用する場合はコメントアウトを外す
+    
     public function getThemeResponsiveImageMap()
     {
         return array(
@@ -135,11 +153,13 @@ class PageTheme extends \Concrete\Core\Page\Theme\Theme implements ThemeProvider
             'small' => '0',
         );
     }
+    */
 
     /*
     記事ブロックで選択出来るクラスを定義できる
     http://concrete5-japan.org/help/5-7/developer/designing-for-concrete5/advanced-css-and-javascript-usage/adding-custom-css-classes-to-blocks-areas-and-the-editor/
-    */
+    使用する場合はコメントアウトを外す
+    
     public function getThemeEditorClasses()
     {
         return array(
@@ -152,13 +172,16 @@ class PageTheme extends \Concrete\Core\Page\Theme\Theme implements ThemeProvider
             array('title' => t('Primary Button'), 'menuClass' => '', 'spanClass' => 'btn btn-primary', 'forceBlock' => '-1'),
         );
     }
+    */
 
     /*
     レイアウト機能で追加するレイアウトの定義ができる
     たとえば、スマートフォンサイズでは1カラム、タブレットサイズでは2カラム、PCサイズでは3カラムという設定ができる
     解説（英語）
     http://documentation.concrete5.org/developers/designing-for-concrete5/adding-complex-custom-layout-presets-in-your-theme
-    */
+    
+    使用する場合はコメントアウトを外し、上のuse,classの箇所の変更が必要になる
+    
     public function getThemeAreaLayoutPresets()
     {
         $presets = array(
@@ -183,4 +206,6 @@ class PageTheme extends \Concrete\Core\Page\Theme\Theme implements ThemeProvider
         );
         return $presets;
     }
+    */
+    
 }
