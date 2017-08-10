@@ -1,3 +1,4 @@
+<?php // ↓必須タグ ?>
 <?php defined('C5_EXECUTE') or die("Access Denied."); ?>
             <footer>
             <?php
